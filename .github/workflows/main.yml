@@ -1,12 +1,12 @@
 name: Test Repo
-on: [workflow_dispatch]
+on: push
 jobs:
-  print:
+  build:
     runs-on: ubuntu-latest
     steps:
-      - name: Print to console
-        run: echo hello github actions!
-      - name: Print few lines
-        run: |
-          echo first line!
-          echo second line!
+      - name: получить код репозитория
+        uses: actions/checkout@v3
+      - name: установить зависимости
+        run: npm i
+      - name: билд приложения
+        run: npm run build
