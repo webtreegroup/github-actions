@@ -1,6 +1,24 @@
 name: Test Repo
 on: push
 jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: получить код репозитория
+        uses: actions/checkout@v3
+      - name: установить зависимости
+        run: npm i
+      - name: линт приложения
+        run: npm run lint
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: получить код репозитория
+        uses: actions/checkout@v3
+      - name: установить зависимости
+        run: npm i
+      - name: тест приложения
+        run: npm run test
   build:
     runs-on: ubuntu-latest
     steps:
